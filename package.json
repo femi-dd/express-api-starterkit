@@ -1,0 +1,28 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "A simple express api with multiple db options starter kit",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/femi-dd/express-api-starterkit.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "api",
+    "restful",
+    "api",
+    "starter-kit",
+    "javascript"
+  ],
+  "author": "Femi_DD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/femi-dd/express-api-starterkit/issues"
+  },
+  "homepage": "https://github.com/femi-dd/express-api-starterkit#readme"
+}
