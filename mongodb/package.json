@@ -4,7 +4,9 @@
   "description": "A simple express api with multiple db options starter kit",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,13 @@
   "bugs": {
     "url": "https://github.com/femi-dd/express-api-starterkit/issues"
   },
-  "homepage": "https://github.com/femi-dd/express-api-starterkit#readme"
+  "homepage": "https://github.com/femi-dd/express-api-starterkit#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
 }
