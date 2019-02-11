@@ -29,5 +29,5 @@ mongoose
 // Create server and listening configurations
 const port = process.env.port || 8000;
 server.listen(port, () => {
-   console.log(`Server started and listsening on port ${port}...`);
+   console.log(`Server started and listening on port ${port}...`);
 });
