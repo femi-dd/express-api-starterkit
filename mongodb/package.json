@@ -1,8 +1,8 @@
 {
-  "name": "y",
+  "name": "express-api-starterkit",
   "version": "1.0.0",
   "description": "A simple express api with multiple db options starter kit",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
@@ -17,7 +17,6 @@
     "express",
     "api",
     "restful",
-    "api",
     "starter-kit",
     "javascript"
   ],
