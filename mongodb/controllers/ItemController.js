@@ -2,89 +2,94 @@ const ItemModel = require('../models/ItemModel');
 
 // Creates a new item
 exports.createNewItem = (req, res) => {
-   const item = req.body;
-   console.log(item);
+  const newItem = req.body;
 
-   ItemModel.createItem(new ItemModel(item), (error, item) => {
-      if (error) {
-         res.status(500).json({
-            msg: 'An error occured',
-            error: error
-         });
-      }
+  ItemModel.createItem(new ItemModel(newItem), (error, item) => {
+    if (error) {
+      res.status(500).json({
+        msg: 'An error occured',
+        error,
+      });
+    }
 
-      if (item != null || item) {
-         res.status(201).json({
-            msg: 'successfully created item.',
-            data: {
-               item: item
-            }
-         });
-      }
-   })
-}
+    if (item !== null || item) {
+      res.status(201).json({
+        msg: 'successfully created item.',
+        data: {
+          item,
+        },
+      });
+    }
+  });
+};
 
 // Gets all items
 exports.getAllItems = (req, res) => {
-   ItemModel.readItems((error, items) => {
-      if (error) {
-         res.status(500).json({
-            msg: 'An error occured',
-            error: error
-         });
-      }
+  ItemModel.readItems((error, items) => {
+    if (error) {
+      res.status(500).json({
+        msg: 'An error occured',
+        error,
+      });
+    }
 
-      if (items != null || items) {
-         res.status(200).json({
-            msg: 'success',
-            data: {
-               items: items
-            }
-         });
-      }
-   })
-}
+    if (items != null || items) {
+      res.status(200).json({
+        msg: 'success',
+        data: {
+          items,
+        },
+      });
+    }
+  });
+};
 
 // Updates an existing item by its id
 exports.updateItemById = (req, res) => {
-   const item = req.body;
-   ItemModel.updateItem(item, (error, item) => {
-      if (error) {
-         res.status(500).json({
-            msg: 'An error occured',
-            error: error
-         });
-      }
+  const itemToUpdate = req.body;
+  if (itemToUpdate.id !== req.params.id) {
+    res.status(400).json({
+      msg: "Id's not identical",
+    });
+  }
 
-      if (item != null || item) {
-         res.status(200).json({
-            msg: 'item updated',
-            data: {
-               item: item
-            }
-         });
-      }
-   })
-}
+  ItemModel.updateItem(itemToUpdate, (error, item) => {
+    if (error) {
+      res.status(500).json({
+        msg: 'An error occured',
+        error,
+      });
+    }
+
+    if (item != null || item) {
+      res.status(200).json({
+        msg: 'item updated',
+        data: {
+          item,
+        },
+      });
+    }
+  });
+};
 
 // Deletes an existing item by its id
 exports.deleteItemById = (req, res) => {
-   const id = req.params.id;
-   ItemModel.deleteItem(id, (error, item) => {
-      if (error) {
-         res.status(500).json({
-            msg: 'An error occured',
-            error: error
-         });
-      }
+  const { id } = { ...req.params };
+  ItemModel.deleteItem(id, (error, item) => {
+    if (error) {
+      res.status(500).json({
+        msg: 'An error occured',
+        error,
+      });
+    }
 
-      if (item != null || item) {
-         res.status(200).json({
-            msg: 'item deleted',
-            data: {
-               item: item
-            }
-         });
-      }
-   })
-}
+    if (item != null || item) {
+      res.status(200).json({
+        msg: 'item deleted',
+        data: {
+          item,
+        },
+      });
+    }
+  });
+};
