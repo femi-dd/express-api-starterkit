@@ -1,24 +1,23 @@
 const express = require('express');
 const mysqlx = require('@mysql/xdevapi');
 
-// Create express object
+// Create express app
 const server = express();
 
-// Load config with database connection parameters
+// Import and use middlewares
 const bodyparser = require('body-parser');
 const helmet = require('helmet');
 
-// Import and use middlewares
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
 server.use(helmet());
 
-// Pass route handler
+// Import and pass route handler
 const routes = require('./routes/Routes');
 
 server.use(routes);
 
-// Test connection to mysql database
+// Load config with database connection parameters
 const dbConfig = require('./config/db');
 
 mysqlx

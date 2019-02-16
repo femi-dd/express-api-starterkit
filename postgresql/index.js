@@ -1,7 +1,7 @@
 const { Client } = require('pg');
 const express = require('express');
 
-// Create express object
+// Create express app
 const server = express();
 
 // Import and use middlewares
@@ -12,7 +12,7 @@ server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
 server.use(helmet());
 
-// Pass route handler
+// Import and pass route handler
 const routes = require('./routes/Routes');
 
 server.use(routes);
