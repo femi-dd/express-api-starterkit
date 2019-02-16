@@ -6,9 +6,11 @@ const server = express();
 
 // Import and use middlewares
 const bodyparser = require('body-parser');
+const helmet = require('helmet');
 
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
+server.use(helmet);
 
 // Pass route handler
 const routes = require('./routes/Routes');

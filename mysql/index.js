@@ -1,14 +1,17 @@
 const express = require('express');
 const mysqlx = require('@mysql/xdevapi');
 
+// Create express object
 const server = express();
 
 // Load config with database connection parameters
 const bodyparser = require('body-parser');
+const helmet = require('helmet');
 
 // Import and use middlewares
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
+server.use(helmet);
 
 // Pass route handler
 const routes = require('./routes/Routes');
