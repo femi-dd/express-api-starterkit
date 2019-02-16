@@ -1,9 +1,9 @@
-const { Pool, Client } = require('pg');
+const { Pool } = require('pg');
 const dbConfig = require('../config/db');
 
 const pool = new Pool(dbConfig);
 
-const addNewItem = (item, res) => {
+const addNewItem = (item) => {
   const query = {
     text: 'insert into items (name, color, price) values ($1, $2, $3)',
     values: [item.name, item.color, item.price],
