@@ -10,7 +10,7 @@ const helmet = require('helmet');
 
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
-server.use(helmet);
+server.use(helmet());
 
 // Pass route handler
 const routes = require('./routes/Routes');
