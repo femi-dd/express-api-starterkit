@@ -4,21 +4,20 @@ const ItemModel = require('../models/ItemModel');
 exports.createNewItem = (req, res) => {
   const item = req.body;
 
-  ItemModel.AddNewItem(item, res)
-    .then((error, result) => {
-      if (error) {
-        res.status(500).json({
-          msg: 'An error occured',
-          err: error,
-        });
-      } else {
-        res.status(201).json({
-          msg: 'Item successfully created.',
-          data: {
-            item,
-          },
-        });
-      }
+  ItemModel.addNewItem(item)
+    .then((result) => {
+      res.status(201).json({
+        msg: 'Item(s) successfully created.',
+        data: {
+          item,
+        },
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        msg: 'An error occured',
+        err: error,
+      });
     });
 };
 
