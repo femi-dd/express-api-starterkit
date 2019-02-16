@@ -15,7 +15,7 @@ const routes = require('./routes/Routes');
 
 server.use(routes);
 
-// Test connection to mysql database
+// Test connection to postgresql database
 const dbConfig = require('./config/db');
 
 const client = new Client(dbConfig);
