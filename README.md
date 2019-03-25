@@ -1,7 +1,7 @@
 # express-api-starterkit
-A simple express api with multiple db options starter kit
+Simple express-api apps with multiple db options starter kit
 
 1. MongoDB
-2. MySql - Uses the latest X DevAPI
+2. MySql
 3. PostgreSql
 4. ??? 🤔
