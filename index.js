@@ -1,29 +1,30 @@
-const { Client } = require('pg');
-const express = require('express');
+const { Client } = require("pg");
+const express = require("express");
 
-// Create express app
+// Create express object
 const server = express();
 
 // Import and use middlewares
-const bodyparser = require('body-parser');
-const helmet = require('helmet');
+const bodyparser = require("body-parser");
+const helmet = require("helmet");
 
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
 server.use(helmet());
 
-// Import and pass route handler
-const routes = require('./routes/Routes');
+// Pass route handler
+const routes = require("./routes/Routes");
 
 server.use(routes);
 
 // Load config with database connection parameters
-const dbConfig = require('./config/db');
+const dbConfig = require("./config/db");
 
 // Test connection to postgresql database
 const client = new Client(dbConfig);
-client.connect()
-  .then(() => console.log('Database connected...'))
+client
+  .connect()
+  .then(() => console.log("Database connected..."))
   .then(() => client.end());
 
 // Create server and listening configurations
