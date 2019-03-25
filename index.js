@@ -1,29 +1,30 @@
-const express = require('express');
-const mysqlx = require('@mysql/xdevapi');
+const express = require("express");
+const mysqlx = require("@mysql/xdevapi");
 
-// Create express app
+// Create express object
 const server = express();
 
-// Import and use middlewares
-const bodyparser = require('body-parser');
-const helmet = require('helmet');
+// Load config with database connection parameters
+const bodyparser = require("body-parser");
+const helmet = require("helmet");
 
+// Import and use middlewares
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
 server.use(helmet());
 
-// Import and pass route handler
-const routes = require('./routes/Routes');
+// Pass route handler
+const routes = require("./routes/Routes");
 
 server.use(routes);
 
-// Load config with database connection parameters
-const dbConfig = require('./config/db');
+// Test connection to mysql database
+const dbConfig = require("./config/db");
 
 mysqlx
   .getSession(dbConfig)
-  .then(() => console.log('Database connected...'))
-  .catch((error) => {
+  .then(() => console.log("Database connected..."))
+  .catch(error => {
     console.log(error);
   });
 
