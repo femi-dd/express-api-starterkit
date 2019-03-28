@@ -21,18 +21,25 @@ const Item = mongoose.model('item', ItemModel);
 module.exports = Item;
 
 // Model queries
-module.exports.createItem = (newItem, callback) => {
+const createItem = (newItem, callback) => {
   newItem.save(callback);
 };
 
-module.exports.readItems = (callback) => {
+const readItems = (callback) => {
   Item.find(callback);
 };
 
-module.exports.updateItem = (item, callback) => {
+const updateItem = (item, callback) => {
   Item.update(item, callback);
 };
 
-module.exports.deleteItem = (itemId, callback) => {
+const deleteItem = (itemId, callback) => {
   Item.deleteOne({ _id: itemId }, callback);
+};
+
+module.exports = {
+  createItem,
+  readItems,
+  updateItem,
+  deleteItem,
 };

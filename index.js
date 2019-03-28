@@ -1,34 +1,39 @@
-const express = require("express");
-const mongoose = require("mongoose");
+const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('passport');
 
 // Create express object
 const server = express();
 
 // Import and use middlewares
-const bodyparser = require("body-parser");
-const helmet = require("helmet");
+const bodyparser = require('body-parser');
+const helmet = require('helmet');
 
 server.use(bodyparser.urlencoded({ extended: false }));
 server.use(bodyparser.json());
+server.use(passport.initialize());
 server.use(helmet());
 
+// Configure middlewares
+require('./middlewares/passport')(passport);
+
 // Pass route handler
-const routes = require("./routes/Routes");
+const routes = require('./routes/Routes');
 
 server.use(routes);
 
 // Connect to mongodb database
-const dbConfig = require("./config/db");
+const dbConfig = require('./config/db');
 
 mongoose
   .connect(dbConfig.connectionString, {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
   })
   .then(() => {
-    console.log("Database connected...");
+    console.log('Database connected...');
   })
-  .catch(error => {
+  .catch((error) => {
     console.log(`Mongoose : ${error}`);
   });
 
